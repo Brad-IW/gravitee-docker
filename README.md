@@ -37,3 +37,49 @@ In this section you will create a simple API which returns a response from [http
 6. Press next, then hit skip on the import file doc page.
 7. Finally press the CREATE AND START THE API button to start the API.
    If done correctly the API will now be accessible by opening `localhost:8082/myapi` in your web browser, or running `curl localhost:8082/myapi` (`curl 127.0.0.1/myapi` on Windows) in your terminal. If all steps were done correctly this should return a JSON response which echos back the information sent in the request.
+
+### Adding An API Key 
+
+First we need to delete our original plan.
+
+1. Select APIs on the left panel, and click on the API we created in the last step (MyAPI).
+2. Click the plans button and find the plan we created in the last step (Basic Plan).
+3. Press the X button to close the plan.
+4. Type the name of the plan in the name field and click YES, CLOSE THIS PLAN.
+
+Now that the original plan has been deleted we can create a new plan.
+
+5. Press the + button to open the plan creation window.
+   - Give the plan a name, e.g. Secure Plan.
+   - Add a description to the plan, for example A secure plan.
+   - Click the Auto validate subscription button under the Subscriptions section.
+6. Press next, then under the authentication dropdown select API Key.
+   Make sure to enable the Propogate API Key to upstream API option.
+7. Press next again, then save.
+8. Back on the plans page, press the cloud button to publish the plan, then hit the deploy your API button at the top of the screen.
+
+The API has now been changed to require an API Key for all requests. Accessing the API once again at `localhost:8082/myapi` will now return a 401 Unauthorized response when trying to access the API without a key.
+
+To get an API key we will create an application for the API.
+
+9. On the left panel select the Applications button.
+10. In the top right press Add Application to begin creating an application.
+    - Give the application a name, e.g. MyApp
+    - Set the description for the application, for example My app description 
+11. Press next, then skip.
+12. In the select an API to subscribe field, choose the API we previously created.
+13. The plan we previously created will now be displayed in the center of the screen. Press the subscribe button which has now shown up.
+14. Click next, then press the CREATE THE APPLICATION button.
+
+Now that the application has been created we can generate an API key.
+
+15. Go back to the applications page by selecting the applications button on the left panel.
+16. Click the application we just created (MyApp)
+17. Under the MyApp section on the left panel, select the subscriptions button.
+18. Select MyAPI under the subscriptions tab.
+
+From here we now have access to the API Key. The key can be used by either adding X-Gravitee-Api-Key to the header along with the key, or by appending api-key to the request parameters.
+
+Accessing `localhost:8082/myapi?api-key=KEY` (where `KEY` is the key which was generated in the last step) in your web browser will return the JSON echo response from the previous basic API example. Providing an incorrect key or no key at all will continue to return the unauthorized response.
+
+Alternatively we can use curl by running `curl localhost:8082/myapi -H "X-Gravitee-Api-Key: KEY"` (where `KEY` is the key which was generated in the last step) on a linux machine. This will pass the key through as a header and should return the same response as above.
