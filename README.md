@@ -10,7 +10,7 @@ This guide assumes that [Docker](https://docs.docker.com/get-docker/) has alread
     
     Once the compose file has finished its start up procedure the GUI will be accessible at `localhost:8084`. 
     
-4. After ensuring that the has container built and ran successfully, that and the GUI is available and working type `CTRL + C` or `COMMAND + C` on Linux and Mac to stop the containers.
+4. After ensuring that the has container built and ran successfully, that and the GUI is available and working type `CTRL + C` or `COMMAND + C` on Linux and Mac into your terminal to stop the containers.
 5. Run `docker compose up -d` to run the container in the background.
 
 
