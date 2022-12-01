@@ -8,7 +8,10 @@ This guide assumes that [Docker](https://docs.docker.com/get-docker/) has alread
 2. Open a terminal and navigate to the gravitee-docker folder.
 3. Run `docker compose up` 
     
-    Once the compose file has finished its start up procedure the GUI will be accessible at `localhost:8084`.
+    Once the compose file has finished its start up procedure the GUI will be accessible at `localhost:8084`. 
+    
+4. After ensuring that the has container built and ran successfully, that and the GUI is available and working type `CTRL + C` or `COMMAND + C` on Linux and Mac to stop the containers.
+5. Run `docker compose up -d` to run the container in the background.
 
 
 ## Test Plan
@@ -17,10 +20,10 @@ This optional test plan will take you thruogh the process of creating a simple A
 
 ### Basic API Example
 
-
 In this section you will create a simple API which returns a response from [httpbin](http://httpbin.org/).
-2. Login to the portal with the username `admin` and the password `admin`
+
 1. Open the Gravitee Management Portal by opening `localhost:8084` in your web browser of choice.
+2. Login to the portal with the username `admin` and the password `admin`
 3. On the left side bar select APIs, then press Add Api. Choose the Continue in the Wizard option.
    - Give your API a name, in this example we will call it MyAPI.
    - Choose a version for the API, for example v1
