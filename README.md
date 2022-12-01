@@ -8,7 +8,7 @@ This guide assumes that [Docker](https://docs.docker.com/get-docker/) has alread
 2. Open a terminal and navigate to the gravitee-docker folder.
 3. Run `docker compose up` 
     
-    Once the compose file has finished its start up procedure the GUI will be accessible on port 8084.
+    Once the compose file has finished its start up procedure the GUI will be accessible at `localhost:8084`.
 
 
 ## Test Plan
